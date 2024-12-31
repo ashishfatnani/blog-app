@@ -13,6 +13,8 @@ export const createPost = async (postData) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(postData),
   });
+
+  await fetchPosts();
   return response.json();
 };
 
@@ -21,5 +23,6 @@ export const deletePost = async (id) => {
   const response = await fetch(`${API_URL}/posts/${id}`, {
     method: "DELETE",
   });
+  await fetchPosts();
   return response.json();
 };
