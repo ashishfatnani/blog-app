@@ -1,9 +1,7 @@
-// src/App.js
 import { useEffect, useState } from "react";
 import PostForm from "./components/PostForm";
 import PostList from "./components/PostList";
 import { fetchPosts } from "./service/api";
-import "./App.css";
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -35,9 +33,27 @@ const App = () => {
     };
   }, []);
 
+  // Inline styles
+  const appStyle = {
+    fontFamily: "'Arial', sans-serif",
+    maxWidth: "800px",
+    margin: "0 auto",
+    padding: "20px",
+    backgroundColor: "#f9f9f9",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  };
+
+  const headerStyle = {
+    textAlign: "center",
+    fontSize: "2rem",
+    color: "#333",
+    marginBottom: "20px",
+  };
+
   return (
-    <div className="app">
-      <h1>Real-Time Blog</h1>
+    <div style={appStyle}>
+      <h1 style={headerStyle}>Real-Time Blog</h1>
       <PostForm setPosts={setPosts} posts={posts} />
       <PostList posts={posts} setPosts={setPosts} />
     </div>
